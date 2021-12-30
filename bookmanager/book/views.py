@@ -141,3 +141,14 @@ books = BookInfo.objects.filter(readcount__gt=20, id__lt=3)
 from django.db.models import Q
 
 books = BookInfo.objects.filter(Q(readcount__gt=20) | Q(id__lt=3))
+
+# 聚合函数
+from django.db.models import Sum, Max, Min, Avg, Count
+
+# 模型类型.objects.aggreggate(xxx('字段名'))
+count = BookInfo.objects.aggregate(Sum('readcount'))
+
+# 排序 sql: select* from bookinfo order by readcount;
+BookInfo.objects.all().order_by('readcount')
+
+
