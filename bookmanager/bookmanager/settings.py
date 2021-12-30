@@ -82,10 +82,23 @@ WSGI_APPLICATION = 'bookmanager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# sqlit3
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# mysql 安装 mysqlclient 驱动模块
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '127.0.0.1',  # mysql主机
+        'PORT': 3306,  # 端口号
+        'USER': 'root',  # 用户名
+        'PASSWORD': 'bt5',  # 密码
+        'NAME': 'book',  # 数据库
     }
 }
 
