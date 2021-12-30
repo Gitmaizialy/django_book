@@ -14,6 +14,9 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+print(__file__)  # 文件路径
+print(os.path.abspath(__file__))  # 绝对路径写法
+print(BASE_DIR)  # 文件的基础路径 基于这个目录下的相对路径
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -22,9 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s#ezsphghsq47ph3jqmw)4c!jrx2saqph8oaxge0he^j(&v16m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# 调试模式 开发过程中看到调试内容  正式部署设置为false
 DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = []
+# 当DEBUG设置为false时，允许以什么形式来访问项目  默认为 127.0.0.1,当设置为*时，可以使用IP或者127.0.0.1
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition 添加并注册子应用
 
