@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'book',  # 方案一
-    'book.apps.BookConfig',  # 方案二
+    'book.apps.BookConfig',  # 方案二 如果配置apps模块（主要用于站点配置）时，则使用方案二方式注册
 ]
 
 MIDDLEWARE = [
