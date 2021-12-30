@@ -116,3 +116,28 @@ BookInfo.objects.get(id=6).delete()
 BookInfo.objects.filter(id=6).delete()
 
 # 逻辑删除（修改标记位 例如 is_delete=False）
+
+
+###### F和Q对象 ######
+# 当两个属性进行比较时，采用F对象
+from django.db.models import F
+
+# 使用方式：2个属性进行比较
+# 语法形式：以filter为例， 模型类名.objects.filter(属性名__运算符=F('第二个属性名'))
+# 例： 查询阅读量大于评论量的图书
+books = BookInfo.objects.filter(readcount__gte=F('commentcount'))
+
+# 与查询
+# 查询阅读量大于20，并且编号小于3的图书
+books = BookInfo.objects.filter(readcount__gt=20).filter(id__lt=3)
+books = BookInfo.objects.filter(readcount__gt=20, id__lt=3)
+
+# 或查询
+# 查询阅读量大于20，或者编号小于3的图书
+# Q查询
+# 或语法形式：以filter为例， 模型类名.objects.filter(Q(属性名__运算符=值)|Q(属性名__运算符=值))
+# 与语法形式：以filter为例， 模型类名.objects.filter(Q(属性名__运算符=值)&Q(属性名__运算符=值))
+# 非语法形式：以filter为例， 模型类名.objects.filter(~Q(属性名__运算符=值))
+from django.db.models import Q
+
+books = BookInfo.objects.filter(Q(readcount__gt=20) | Q(id__lt=3))
